@@ -8,6 +8,7 @@ django = "*"
 psycopg2 = "*"
 djangorestframework-simplejwt = "*"
 djangorestframework = "*"
+drf-access-policy = "*"
 
 [dev-packages]
 

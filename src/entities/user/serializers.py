@@ -16,9 +16,9 @@ class UserSerializer(serializers.ModelSerializer):
         }
 
     def create(self, validated_data):
-        if password := validated_data.get('password', None):
-            user: User = self.Meta.model(**validated_data)
-            user.set_password(password)
-            user.save()
-            return user
-        raise serializers.ValidationError({'password': 'This field is required'})
+        password = validated_data.get('password', None)
+        user: User = self.Meta.model(**validated_data)
+        user.set_password(password)
+        user.save()
+        return user
+

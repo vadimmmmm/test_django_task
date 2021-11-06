@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "20226defdeee74a3b9221eb8fe125635329cb16efc298550bb515b876c44942e"
+            "sha256": "268a6005f4941b6d9175d0825957114aa79cc8c72ec643dae70dd7ace5716d40"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -48,6 +48,13 @@
             "index": "pypi",
             "version": "==5.0.0"
         },
+        "drf-access-policy": {
+            "hashes": [
+                "sha256:6ccb77eb73dfcf485a497d0884cb3b1935e56715c208aa09581cf53c96ead9b5"
+            ],
+            "index": "pypi",
+            "version": "==1.1.0"
+        },
         "psycopg2": {
             "hashes": [
                 "sha256:079d97fc22de90da1d370c90583659a9f9a6ee4007355f5825e5f1c70dffc1fa",
@@ -72,6 +79,14 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==2.3.0"
+        },
+        "pyparsing": {
+            "hashes": [
+                "sha256:c0a7dfcd26825bd4453574c4e7ad04aa095975ce54d04f738fe3a8350fbd223a",
+                "sha256:e0df773d7fa2240322daae7805626dfc5f2d5effb34e1a7be2702c99cfb9f6b1"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==3.0.4"
         },
         "pytz": {
             "hashes": [

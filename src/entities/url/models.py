@@ -4,17 +4,21 @@ from django.db import models
 
 from common.models import Model
 from entities.user.models import User
+from project.settings import APPLICATION_DOMAIN
 
 
 class Url(Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='urls')
-    generated_url = models.URLField()
+    generated_url = models.URLField(null=False, blank=False)
     real_url = models.URLField()
 
     @cached_property
-    def generated_url(self) -> str:
+    def generated_url_name(self) -> str:
         return self.generated_url
 
     @cached_property
-    def real_url(self) -> str:
+    def real_url_name(self) -> str:
         return self.real_url
+
+    def before_first_save(self):
+        self.generated_url = f'{APPLICATION_DOMAIN}:8000/{str(self.id)[:5].upper()}/'
