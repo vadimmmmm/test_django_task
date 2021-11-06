@@ -8,3 +8,8 @@ class AbstractBaseUser(_models.AbstractBaseUser):
 
 class BaseUserManager(_models.BaseUserManager):
     pass
+
+
+class PermissionsMixin(_models.PermissionsMixin):
+    class Meta:
+        abstract = True
