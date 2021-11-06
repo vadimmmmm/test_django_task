@@ -11,6 +11,7 @@ class Url(Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='urls')
     generated_url = models.URLField(null=False, blank=False)
     real_url = models.URLField()
+    generated_part = models.CharField(max_length=5)
 
     class Meta:
         constraints = [
@@ -26,4 +27,5 @@ class Url(Model):
         return self.real_url
 
     def before_first_save(self):
-        self.generated_url = f'{APPLICATION_DOMAIN}:8000/{str(self.id)[:5].upper()}/'
+        self.generated_part = str(self.id)[:5].upper()
+        self.generated_url = f'{APPLICATION_DOMAIN}:8000/{self.generated_part}/'

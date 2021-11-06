@@ -20,7 +20,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from entities.url.views import UrlCreation
+from entities.url.views import UrlCreation, Redirect
 from entities.user.views import UserCreation
 
 urlpatterns = [
@@ -29,4 +29,5 @@ urlpatterns = [
     path('api/v1/registration/', UserCreation.as_view()),
     path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('<str:query>/', Redirect.as_view()),
 ]
