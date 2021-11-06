@@ -24,8 +24,13 @@ class UserManager(BaseUserManager):
 
     def create_superuser(self, user_name, password, **extra_fields) -> 'User':
         extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_active', True)
+
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
         return self._create_user(user_name, password, **extra_fields)
 
 
@@ -36,6 +41,15 @@ class User(Model, AbstractBaseUser, PermissionsMixin):
         'staff status',
         default=False,
         help_text='Designates whether the user can log into this site.',
+    )
+
+    is_active = models.BooleanField(
+        'active',
+        default=True,
+        help_text=(
+            'Designates whether this user should be treated as active. '
+            'Unselect this instead of deleting accounts.'
+        ),
     )
 
     USERNAME_FIELD = 'user_name'
