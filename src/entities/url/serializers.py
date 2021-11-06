@@ -20,7 +20,6 @@ class UrlSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         validated_data['user'] = request.user
         url_instance = self.Meta.model(**validated_data)
-        Url.objects.all().delete()
         url_instance.save()
         return url_instance
 

@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  db:
+    image: 'postgres'
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+  api:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8002
+    ports:
+      - 8000:8002
+    depends_on:
+      - db
+    links:
+      - db:db
+    environment:
+      DEBUG: 1
+      SECRET_KEY: "thae1ea6joo9aimawohDaeSei6YaeVai"
+      APPLICATION_DOMAIN: "http://localhost/"
+      APPLICATION_HOST: "localhost"
+      SENDGRID_API_KEY: ""
+
+volumes:
+  postgres_db:
