@@ -8,8 +8,17 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'id',
-            'user_name'
+            'user_name',
+            'password',
         )
         extra_kwargs = {
             'password': {'write_only': True}
         }
+
+    def create(self, validated_data):
+        if password := validated_data.get('password', None):
+            user: User = self.Meta.model(**validated_data)
+            user.set_password(password)
+            user.save()
+            return user
+        raise serializers.ValidationError({'password': 'This field is required'})
