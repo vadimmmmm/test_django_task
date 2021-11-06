@@ -12,6 +12,11 @@ class Url(Model):
     generated_url = models.URLField(null=False, blank=False)
     real_url = models.URLField()
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['generated_url', 'real_url'], name='urls')
+        ]
+
     @cached_property
     def generated_url_name(self) -> str:
         return self.generated_url
