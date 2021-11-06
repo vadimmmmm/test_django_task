@@ -25,7 +25,7 @@ from entities.user.views import UserCreation
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/generate-url/', UrlCreation.as_view()),
+    path('api/v1/url/', UrlCreation.as_view()),
     path('api/v1/registration/', UserCreation.as_view()),
     path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
