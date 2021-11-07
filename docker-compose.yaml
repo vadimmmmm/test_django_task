@@ -10,6 +10,8 @@ services:
     command: python manage.py runserver 0.0.0.0:8002
     ports:
       - 8000:8002
+    volumes:
+      - postgres_db:/var/lib/postgresql/data/
     depends_on:
       - db
     links:

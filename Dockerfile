@@ -10,7 +10,10 @@ COPY Pipfile.lock /code/
 RUN export LC_ALL=C.UTF-8 && export LANG=C.UTF-8 && pipenv lock -r > requirements.txt
 RUN pip3 install -r requirements.txt
 COPY src /code/
-#COPY src/entities/content/management/commands/generate_data.py /code/
+COPY ./entrypoint.sh /code/
+
 RUN apt install -y netcat
+RUN chmod +x /code/entrypoint.sh
+ENTRYPOINT ["/code/entrypoint.sh"]
 
 EXPOSE 8000
