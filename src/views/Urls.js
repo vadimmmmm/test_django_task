@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import Context from "./Context";
-import {Link} from "react-router-dom";
 
 export default function GetInfo({match}) {
     const {cookies} = React.useContext(Context);

@@ -19,8 +19,8 @@ export default function Nav() {
                                     className="sr-only"> </span></Link>
                             </li>
                             <li className="nav-item active">
-                                <Link to={{pathname: `/main/add`}} className="dropdown-item">Добавить запись<span
-                                    className="sr-only">(current)</span></Link>
+                                <Link to={{pathname: `/add-url/`}} className="dropdown-item">Add url<span
+                                    className="sr-only"> </span></Link>
                             </li>
                             <li className="nav-item active">
                                 <Link to={{pathname: `/main/update`}} className="dropdown-item">Обновить запись<span

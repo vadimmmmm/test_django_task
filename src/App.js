@@ -9,6 +9,7 @@ import Nav from "./views/Nav";
 import GetInfo from "./views/Urls";
 import Cookies from "universal-cookie";
 import Context from "./views/Context";
+import CreateUrl from "./views/CreateUrl";
 
 function App() {
     const cookies = new Cookies();
@@ -18,8 +19,9 @@ function App() {
             <Context.Provider value={{cookies}}>
                 <Router>
                     <Nav/>
-                    <Route path="/" component={Auth}/>
+                    <Route path="/" exact component={Auth}/>
                     <Route path="/my-urls/" component={GetInfo}/>
+                    <Route path="/add-url/" component={CreateUrl}/>
                 </Router>
             </Context.Provider>
         </div>
