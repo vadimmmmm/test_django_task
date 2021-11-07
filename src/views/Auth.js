@@ -58,7 +58,7 @@ export default function Auth() {
 
                             <button type="submit">Login</button>
 
-                            <Link to={'/registration/'}><button>f you haven't an account</button></Link>
+                            <Link to={'/registration/'}><button>If you haven't an account</button></Link>
                         </div>
                     </form>
                 </div>
