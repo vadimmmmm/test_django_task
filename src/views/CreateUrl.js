@@ -35,7 +35,7 @@ export default function CreateUrl() {
 
                 <div className="col-md-offset-3 col-md-6">
                     <form className="form-horizontal" onSubmit={onSubmit}>
-                        <span className="heading">Adding</span>
+                        <span className="heading">Adding url</span>
                         <div className="form-group">
                             <input type="login" className="form-control" id="inputEmail" placeholder="Enter your url"
                                    onChange={changeUrl} value={url}/>
