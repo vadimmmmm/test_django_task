@@ -16,7 +16,6 @@ function App() {
 
                     <Nav/>
                     <Route path="/" component={Auth} />
-
             </Router>
         </div>
     );
