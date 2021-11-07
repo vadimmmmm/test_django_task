@@ -1,9 +1,9 @@
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import React from "react";
 import Context from "./Context";
 
 export default function Nav() {
-    const {token, setToken, userName, setGlobalUserName} = React.useContext(Context);
+    const {token, setToken, userName, setGlobalUserName, cookies} = React.useContext(Context);
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,13 +20,15 @@ export default function Nav() {
                         <li className="nav-item active">
                             {token && <Link to={{pathname: `/my-urls/`}} className="dropdown-item">My urls<span
                                 className="sr-only"> </span></Link>}
-                            {!token && <Link to={{pathname: `/my-urls/`}} className="dropdown-item disabled">My urls<span
+                            {!token &&
+                            <Link to={{pathname: `/my-urls/`}} className="dropdown-item disabled">My urls<span
                                 className="sr-only"> </span></Link>}
                         </li>
                         <li className="nav-item active">
-                            {token &&  <Link to={{pathname: `/add-url/`}} className="dropdown-item">Add url<span
+                            {token && <Link to={{pathname: `/add-url/`}} className="dropdown-item">Add url<span
                                 className="sr-only"> </span></Link>}
-                            {!token && <Link to={{pathname: `/add-url/`}} className="dropdown-item disabled">Add url<span
+                            {!token &&
+                            <Link to={{pathname: `/add-url/`}} className="dropdown-item disabled">Add url<span
                                 className="sr-only"> </span></Link>}
                         </li>
                     </ul>
@@ -39,7 +41,9 @@ export default function Nav() {
 
                     {token &&
                     <button className="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={() => {
-                        setToken(''); setGlobalUserName('');
+                        setToken('');
+                        setGlobalUserName('');
+                        return <Redirect to={{pathname: `/`}}/>
                     }}>Exit
                     </button>}
                 </form>
