@@ -15,7 +15,7 @@ export default function Nav() {
 
                         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                             <li className="nav-item active">
-                                <Link to={{pathname: `/my-urls`}} className="dropdown-item">My urls<span
+                                <Link to={{pathname: `/my-urls/`}} className="dropdown-item">My urls<span
                                     className="sr-only"> </span></Link>
                             </li>
                             <li className="nav-item active">

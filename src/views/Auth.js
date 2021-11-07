@@ -1,11 +1,13 @@
 import React from "react";
 import axios from 'axios';
-import Cookies from 'universal-cookie';
+import {Redirect} from "react-router-dom";
+import Context from "./Context";
 
 export default function Auth(){
+    const {cookies} = React.useContext(Context);
     const [userName, setUserName] = React.useState('');
     const [password, setPassword] = React.useState('');
-    // const [redirect, setRedirect] = React.useState(false);
+    const [redirect, setRedirect] = React.useState(false);
 
 
     function changeUserName(e){
@@ -23,17 +25,16 @@ export default function Auth(){
             'password': password
         }).then(response => {
             if (response.status === 200){
-                const cookies = new Cookies();
                 cookies.set('access', response.data.access);
-                // setRedirect(true);
+                setRedirect(true);
             }
         });
 
     }
 
-    // if(redirect) {
-    //     return <Redirect to={{pathname: `/main`}}/>
-    // }
+    if(redirect) {
+        return <Redirect to={{pathname: `/main`}}/>
+    }
 
     return(
         <div className="container">
