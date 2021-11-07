@@ -7,7 +7,6 @@ class UrlSerializer(serializers.ModelSerializer):
     class Meta:
         model = Url
         fields = (
-            'id',
             'real_url',
             'generated_url',
         )
@@ -22,4 +21,3 @@ class UrlSerializer(serializers.ModelSerializer):
         url_instance = self.Meta.model(**validated_data)
         url_instance.save()
         return url_instance
-

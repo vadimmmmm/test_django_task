@@ -1,5 +1,6 @@
-from django.db import models as _models
 from uuid import uuid4
+
+from django.db import models as _models
 
 
 class Model(_models.Model):

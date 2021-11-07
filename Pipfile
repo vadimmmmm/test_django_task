@@ -11,6 +11,8 @@ djangorestframework = "*"
 drf-access-policy = "*"
 install = "*"
 django-cors-headers = "*"
+isort = "*"
+flake8 = "*"
 
 [dev-packages]
 

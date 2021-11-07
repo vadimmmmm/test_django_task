@@ -15,12 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+from rest_framework_simplejwt.views import (TokenObtainPairView,
+                                            TokenRefreshView)
 
-from entities.url.views import UrlCreationView, Redirect
+from entities.url.views import Redirect, UrlCreationView
 from entities.user.views import UserCreation
 
 urlpatterns = [

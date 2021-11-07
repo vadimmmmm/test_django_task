@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import os
 from datetime import timedelta
 from pathlib import Path
 
@@ -25,11 +24,11 @@ SECRET_KEY = 'django-insecure-al70b+on1-i9=)k9n06r&s$%t7=bohp@82j&oee=h(a4212x@-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://0.0.0.0:3000/",
+    "http://0.0.0.0:3000",
 ]
 
 AUTH_USER_MODEL = 'user.User'
@@ -66,8 +65,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,6 +86,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'test_django_task',
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
