@@ -22,7 +22,6 @@ class Redirect(generics.RetrieveAPIView):
     lookup_url_kwarg = 'query'
     lookup_field = 'generated_part'
     queryset = Url.objects.all()
-    permission_classes = (IsAuthenticated,)
 
     def retrieve(self, request, *args, **kwargs):
         return redirect(self.get_object().real_url)
