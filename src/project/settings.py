@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0']
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
 AUTH_USER_MODEL = 'user.User'
 # Application definition
 
@@ -38,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework_simplejwt',
+    'corsheaders',
     'rest_framework',
     'entities.url',
     'entities.user',
@@ -51,6 +56,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -142,5 +149,4 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-APPLICATION_DOMAIN = 'http://localhost'
+APPLICATION_DOMAIN = 'http://0.0.0.0'

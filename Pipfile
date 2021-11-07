@@ -9,6 +9,8 @@ psycopg2 = "*"
 djangorestframework-simplejwt = "*"
 djangorestframework = "*"
 drf-access-policy = "*"
+install = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

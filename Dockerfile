@@ -2,6 +2,7 @@ FROM tiangolo/uwsgi-nginx:python3.9
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update && apt-get install python-dev postgresql-client libssl-dev -y
+RUN pip3 install --upgrade pip
 RUN pip3 install pipenv
 RUN mkdir /code
 WORKDIR /code
