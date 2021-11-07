@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import {Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import Context from "./Context";
 
 export default function Auth() {
@@ -55,11 +55,10 @@ export default function Auth() {
                                    onChange={changePassword} value={password}/>
                         </div>
                         <div className="form-group">
-                            <div className="main-checkbox">
-                                <input type="checkbox" value="none" id="checkbox1" name="check"/>
 
-                            </div>
                             <button type="submit">Login</button>
+
+                            <Link to={'/registration/'}><button>f you haven't an account</button></Link>
                         </div>
                     </form>
                 </div>

@@ -55,7 +55,7 @@ export default function Registration(){
                                    onChange={changePassword} value={password}/>
                         </div>
                         <div className="form-group">
-                            <button type="submit">Login</button>
+                            <button type="submit">Register</button>
                         </div>
                     </form>
                 </div>
