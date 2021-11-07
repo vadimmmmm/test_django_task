@@ -10,6 +10,7 @@ export default function Auth() {
     const [redirect, setRedirect] = React.useState(false);
 
 
+
     function changeUserName(e) {
         setUserName(e.target.value);
     }
@@ -25,7 +26,7 @@ export default function Auth() {
             'password': password
         }).then(response => {
             if (response.status === 200) {
-                cookies.set('access', response.data.access);
+                localStorage.setItem('access', response.data.access);
                 setToken(response.data.access);
                 setGlobalUserName(response.data.user_name);
                 setRedirect(true);

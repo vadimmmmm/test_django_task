@@ -1,19 +1,25 @@
 import React from "react";
 import axios from "axios";
 import Context from "./Context";
+import {Redirect} from "react-router-dom";
 
 export default function GetInfo({match}) {
     const {cookies} = React.useContext(Context);
     const [info, setInfo] = React.useState([])
+
     React.useEffect(() => {
         axios({
             method: 'GET',
             url: `http://0.0.0.0:8000/api/v1/url/`,
-            headers: {'Authorization': `Bearer ${cookies.get('access')}`}
+            headers: {'Authorization': `Bearer ${localStorage.getItem('access')}`}
         }).then(response => {
             setInfo(response.data)
         })
     }, [])
+
+    if (!localStorage.getItem('access')){
+        return <Redirect to={'/'}/>
+    }
 
     return (
         <div>

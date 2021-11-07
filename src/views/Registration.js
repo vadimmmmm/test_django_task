@@ -25,7 +25,7 @@ export default function Registration(){
             'password': password
         }).then(response => {
             if (response.status === 201){
-                cookies.set('access', response.data.access);
+                localStorage.setItem('access', response.data.access);
                 setToken(response.data.access);
                 setGlobalUserName(response.data.user_name);
                 setRedirect(true);

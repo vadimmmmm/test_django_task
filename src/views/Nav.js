@@ -4,6 +4,8 @@ import Context from "./Context";
 
 export default function Nav() {
     const {token, setToken, userName, setGlobalUserName, cookies} = React.useContext(Context);
+    const [redirect, setRedirect] = React.useState(false);
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -34,16 +36,17 @@ export default function Nav() {
                     </ul>
                 </div>
                 <form className="form-inline my-2 my-lg-0">
-                    {!token && <Link to={{pathname: `/`}}>
+                    {!localStorage.getItem('access') && <Link to={{pathname: `/`}}>
                         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Login
                         </button>
                     </Link>}
 
-                    {token &&
+                    {localStorage.getItem('access') &&
                     <button className="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={() => {
                         setToken('');
                         setGlobalUserName('');
-                        return <Redirect to={{pathname: `/`}}/>
+                        localStorage.removeItem('access')
+                        setRedirect(true);
                     }}>Exit
                     </button>}
                 </form>

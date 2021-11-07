@@ -1,12 +1,16 @@
 import React from "react";
 import axios from 'axios';
 import Context from "./Context";
+import {Redirect} from "react-router-dom";
 
 export default function CreateUrl() {
     const {cookies} = React.useContext(Context);
     const [url, setUrl] = React.useState('');
     const [generatedUrl, setGeneratedUrl] = React.useState('');
 
+    if (!localStorage.getItem('access')){
+        return <Redirect to={'/'}/>
+    }
 
     function changeUrl(e) {
         setUrl(e.target.value);
@@ -19,7 +23,7 @@ export default function CreateUrl() {
                 'real_url': url
             },
             {
-                headers: {'Authorization': `Bearer ${cookies.get('access')}`}
+                headers: {'Authorization': `Bearer ${localStorage.getItem('access')}`}
             }).then(response => {
             if (response.status === 201) {
                 setGeneratedUrl(response.data.generated_url);
