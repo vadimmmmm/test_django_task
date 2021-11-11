@@ -7,3 +7,32 @@
 Также можно нажать на my urls на навбаре и увилеть таблицу с урлами,при нажатии на которые вас перенаправит на оригинальный сайт.
 
 Картинки интерфейса можно увидеть в ветке main
+
+Первый sql запрос: 
+SELECT 
+   b.client_number,
+   count(IF(v.outcome = 'win', 1, NULL)) AS 'Побед',
+   count(IF(v.outcome = 'lose', 1, NULL)) AS 'Поражений'
+FROM `event_entity` e
+INNER JOIN `bid` 		 b ON e.play_id = b.play_id
+INNER JOIN `event_value` v ON e.play_id = v.play_id
+GROUP BY b.client_number
+ORDER BY b.client_number;
+ 
+ Второй sql вопрос:
+ WITH gamesCTE (first_team, second_team, games_count)
+        AS
+        (
+                SELECT 
+				  least(e.home_team, e.away_team) as 'first_team',
+				  greatest(e.home_team, e.away_team) as 'second_team',
+				  count(*)
+				FROM `event_entity` e
+				GROUP BY first_team, second_team
+				HAVING COUNT(*) >= 1
+				ORDER BY first_team, second_team
+        )
+SELECT 
+	concat(first_team, '-', second_team) as 'Game',
+    games_count as 'Games count'
+FROM gamesCTE;
