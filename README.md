@@ -22,6 +22,7 @@ ORDER BY b.client_number;
 ```
  
  Второй sql вопрос:
+ ```sql
  WITH gamesCTE (first_team, second_team, games_count)
         AS
         (
@@ -38,3 +39,4 @@ SELECT
 	concat(first_team, '-', second_team) as 'Game',
     games_count as 'Games count'
 FROM gamesCTE;
+```
