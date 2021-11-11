@@ -8,7 +8,8 @@
 
 Картинки интерфейса можно увидеть в ветке main
 
-Первый sql запрос: 
+Первый sql запрос:
+```sql
 SELECT 
    b.client_number,
    count(IF(v.outcome = 'win', 1, NULL)) AS 'Побед',
@@ -18,6 +19,7 @@ INNER JOIN `bid` 		 b ON e.play_id = b.play_id
 INNER JOIN `event_value` v ON e.play_id = v.play_id
 GROUP BY b.client_number
 ORDER BY b.client_number;
+```
  
  Второй sql вопрос:
  WITH gamesCTE (first_team, second_team, games_count)
